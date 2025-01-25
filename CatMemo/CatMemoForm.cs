@@ -67,8 +67,6 @@ namespace CatMemo
             FukidashiText_TextChanged(fukidashiText, new EventArgs());
 
             Properties.Settings.Default.Save();
-
-
         }
 
         private void CatMemoForm_DragEnter(object sender, DragEventArgs e)
@@ -171,15 +169,9 @@ namespace CatMemo
                                 EncoderFallback.ExceptionFallback,
                                 new DecoderReplacementFallback(""));
             Graphics g = tb.CreateGraphics();
-            var byteCount = encoding.GetByteCount(tb.Text.ToCharArray());
             var textHeight = g.MeasureString(tb.Text, tb.Font, tb.Width).Height;
-            var minHeight = fukidashiText.Font.Size * 30;
-            minHeight = 280;
-            var minTBHeight = (int)(fukidashiText.Font.Size * 9);
-            minTBHeight = 80;
-            var minDY = (int)(fukidashiText.Font.Size * 16 / 10);
-            minDY = 311;
-            if (byteCount < minHeight)
+            var minTBHeight = 80;
+            if (textHeight < minTBHeight)
             {
 
             }
